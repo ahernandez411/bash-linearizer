@@ -1,8 +1,6 @@
 import argparse
 import os
 
-from argparse import Namespace
-
 class ScriptMinify:
     def __init__(self):
         parser = argparse.ArgumentParser(
