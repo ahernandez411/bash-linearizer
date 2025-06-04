@@ -16,6 +16,6 @@ jobs:
 
     - name: Run tests
       shell: bash
-      run:
+      run: |
         cd src
         python3 -m unittest discover -v
