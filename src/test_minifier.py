@@ -7,20 +7,20 @@ from minifier import Minifier
 
 class TestScriptMinify(unittest.TestCase):
     DIR_TEMP = "temp"
-    PATH_INPUT = os.path.join(DIR_TEMP, "sample.sh")
-    PATH_OUTPUT = os.path.join(DIR_TEMP, "sample-linearized.sh")
-    PATH_HI_THERE = os.path.join(DIR_TEMP, "hi-there.txt")
+    PATH_SCRIPT = os.path.join(DIR_TEMP, "sample.sh")
+    PATH_SCRIPT_MINIFIED = os.path.join(DIR_TEMP, "sample-minified.sh")
+    PATH_ONE_LINE = os.path.join(DIR_TEMP, "oneline.txt")
     PATH_MULTILINE = os.path.join(DIR_TEMP, "multiline.txt")
 
     def test_if_fails_without_error(self):
-        os.remove(self.PATH_INPUT)
+        os.remove(self.PATH_SCRIPT)
 
         args = [
-            "main.py",
+            "minifier.py",
             "-i",
-            self.PATH_INPUT,
+            self.PATH_SCRIPT,
             "-o",
-            self.PATH_OUTPUT,
+            self.PATH_SCRIPT_MINIFIED,
         ]
 
         sys.argv = args          
@@ -28,15 +28,15 @@ class TestScriptMinify(unittest.TestCase):
         minifier = Minifier()
         minifier.run()
 
-        self.assertFalse(os.path.exists(self.PATH_OUTPUT))
+        self.assertFalse(os.path.exists(self.PATH_SCRIPT_MINIFIED))
     
     def test_if_linearized_script_is_created(self):        
         args = [
             "main.py",
             "-i",
-            self.PATH_INPUT,
+            self.PATH_SCRIPT,
             "-o",
-            self.PATH_OUTPUT,
+            self.PATH_SCRIPT_MINIFIED,
         ]
 
         sys.argv = args          
@@ -44,16 +44,16 @@ class TestScriptMinify(unittest.TestCase):
         minifier = Minifier()
         minifier.run()
 
-        self.assertTrue(os.path.exists(self.PATH_OUTPUT))
+        self.assertTrue(os.path.exists(self.PATH_SCRIPT_MINIFIED))
 
     
     def test_if_linearized_script_runs_successful(self):
         args = [
             "main.py",
             "-i",
-            self.PATH_INPUT,
+            self.PATH_SCRIPT,
             "-o",
-            self.PATH_OUTPUT,
+            self.PATH_SCRIPT_MINIFIED,
         ]
 
         sys.argv = args          
@@ -61,13 +61,13 @@ class TestScriptMinify(unittest.TestCase):
         minifier = Minifier()
         minifier.run()
 
-        one_liner = self._load_file(self.PATH_OUTPUT)
+        one_liner = self._load_file(self.PATH_SCRIPT_MINIFIED)
         os.system(one_liner)
 
-        self.assertTrue(os.path.exists(self.PATH_HI_THERE))
+        self.assertTrue(os.path.exists(self.PATH_ONE_LINE))
         self.assertTrue(os.path.exists(self.PATH_MULTILINE))
 
-        hi_there = self._load_file(self.PATH_HI_THERE).splitlines()
+        hi_there = self._load_file(self.PATH_ONE_LINE).splitlines()
 
         length_hi_there = len(hi_there)
         self.assertEqual(length_hi_there, 1)
@@ -99,7 +99,7 @@ ME=$(whoami)
 
 mkdir -p temp
 
-echo "Hi $ME" > {self.PATH_HI_THERE}
+echo "Hi $ME" > {self.PATH_ONE_LINE}
 
 MULTILINE="This is a 
 multiline string
@@ -108,7 +108,7 @@ have this go into a single line"
 
 echo $MULTILINE > {self.PATH_MULTILINE}
 """
-        with open(self.PATH_INPUT, "w") as writer:
+        with open(self.PATH_SCRIPT, "w") as writer:
             writer.write(sample_sh)
 
 
