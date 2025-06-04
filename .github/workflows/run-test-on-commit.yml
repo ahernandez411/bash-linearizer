@@ -1,0 +1,21 @@
+name: Run Test on Commit
+
+on:
+  push:
+    branches:
+    - main
+  
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+
+    - name: Run tests
+      shell: bash
+      run:
+        cd src
+        python3 -m unittest discover -v
