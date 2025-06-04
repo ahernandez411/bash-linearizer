@@ -3,9 +3,9 @@ import shutil
 import sys
 import unittest
 
-from main import Main
+from script_minify import ScriptMinify
 
-class TestMain(unittest.TestCase):
+class TestScriptMinify(unittest.TestCase):
     DIR_TEMP = "temp"
     PATH_INPUT = os.path.join(DIR_TEMP, "sample.sh")
     PATH_OUTPUT = os.path.join(DIR_TEMP, "sample-linearized.sh")
@@ -25,8 +25,8 @@ class TestMain(unittest.TestCase):
 
         sys.argv = args          
         
-        main = Main()
-        main.run()
+        minifier = ScriptMinify()
+        minifier.run()
 
         self.assertFalse(os.path.exists(self.PATH_OUTPUT))
     
@@ -41,8 +41,8 @@ class TestMain(unittest.TestCase):
 
         sys.argv = args          
         
-        main = Main()
-        main.run()
+        minifier = ScriptMinify()
+        minifier.run()
 
         self.assertTrue(os.path.exists(self.PATH_OUTPUT))
 
@@ -58,8 +58,8 @@ class TestMain(unittest.TestCase):
 
         sys.argv = args          
         
-        main = Main()
-        main.run()
+        minifier = ScriptMinify()
+        minifier.run()
 
         one_liner = self._load_file(self.PATH_OUTPUT)
         os.system(one_liner)

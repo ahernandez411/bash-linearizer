@@ -5,17 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Script Linearizer",
+            "name": "Debug Script Minify",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/src/main.py",
+            "program": "${workspaceFolder}/src/script_minify.py",
             "console": "integratedTerminal"
         },
         {
-            "name": "Test Script Linearizer",
+            "name": "Test Script Minify",
             "type": "debugpy",
             "request":"launch",
-            "program": "${workspaceFolder}/src/main_test.py",
+            "program": "${workspaceFolder}/src/test_script_minify.py",
             "console": "integratedTerminal",            
         }
     ]

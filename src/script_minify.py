@@ -3,13 +3,14 @@ import os
 
 from argparse import Namespace
 
-class Main:
+class ScriptMinify:
     def __init__(self):
         parser = argparse.ArgumentParser(
-            description="This tool will take an input and output path to linearize a bash/shell script"
+            description="This tool will read in a shell or bash script and output it as a single line."
         )
-        parser.add_argument("-i", "--input-path", help="The path to the script to be linearized")
-        parser.add_argument("-o", "--output-path", help="The path where the linearized script should be saved")
+        parser.add_argument("-i", "--input-path", help="The path to the shell or bash script.")
+        parser.add_argument("-o", "--output-path", help="The path to save the minified script.")
+        self.parser = parser
 
         args = parser.parse_args()    
         self.input_path = args.input_path   
@@ -17,6 +18,12 @@ class Main:
         
 
     def run(self):
+        if self.input_path is None and self.output_path is None:
+            print("No inputs detected, please provide arguments and try again")
+            print("")
+            self.parser.print_help()
+            return
+
         if not os.path.exists(self.input_path):
             return
 
@@ -104,4 +111,4 @@ class Main:
 
 
 if __name__ == "__main__":    
-    Main().run()
+    ScriptMinify().run()
