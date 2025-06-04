@@ -16,7 +16,7 @@
             "type": "debugpy",
             "request":"launch",
             "program": "${workspaceFolder}/src/main_test.py",
-            "console": "internalConsole",            
+            "console": "integratedTerminal",            
         }
     ]
 }

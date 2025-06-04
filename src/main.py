@@ -18,8 +18,7 @@ class Main:
 
     def run(self):
         if not os.path.exists(self.input_path):
-            print(f"Could not find file at {self.input_path}, exiting...")
-            exit
+            return
 
         dir_output = os.path.dirname(self.output_path)
         if not os.path.exists(dir_output):
