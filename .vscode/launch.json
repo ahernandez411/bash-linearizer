@@ -15,7 +15,7 @@
             "name": "Test Script Minify",
             "type": "debugpy",
             "request":"launch",
-            "program": "${workspaceFolder}/src/minifier_test.py",
+            "program": "${workspaceFolder}/src/test_minifier.py",
             "console": "integratedTerminal",            
         }
     ]
