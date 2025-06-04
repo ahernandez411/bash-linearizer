@@ -3,7 +3,7 @@ import shutil
 import sys
 import unittest
 
-from script_minify import ScriptMinify
+from minifier import Minifier
 
 class TestScriptMinify(unittest.TestCase):
     DIR_TEMP = "temp"
@@ -25,7 +25,7 @@ class TestScriptMinify(unittest.TestCase):
 
         sys.argv = args          
         
-        minifier = ScriptMinify()
+        minifier = Minifier()
         minifier.run()
 
         self.assertFalse(os.path.exists(self.PATH_OUTPUT))
@@ -41,7 +41,7 @@ class TestScriptMinify(unittest.TestCase):
 
         sys.argv = args          
         
-        minifier = ScriptMinify()
+        minifier = Minifier()
         minifier.run()
 
         self.assertTrue(os.path.exists(self.PATH_OUTPUT))
@@ -58,7 +58,7 @@ class TestScriptMinify(unittest.TestCase):
 
         sys.argv = args          
         
-        minifier = ScriptMinify()
+        minifier = Minifier()
         minifier.run()
 
         one_liner = self._load_file(self.PATH_OUTPUT)

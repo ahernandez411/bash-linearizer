@@ -5,10 +5,10 @@ This tool takes a bash or shell script as an input file and minifies it so it fi
 This is helpful if you want to take a script and run it from a single copy-paste command.
 
 ## Usage Help
-This help documentation was created by running `python3 src/script_minify.py` from a terminal window.
+This help documentation was created by running `python3 src/minifier.py` from a terminal window.
 
 ```
-usage: script_minify.py [-h] [-i INPUT_PATH] [-o OUTPUT_PATH]
+usage: minifier.py [-h] [-i INPUT_PATH] [-o OUTPUT_PATH]
 
 This tool will read in a shell or bash script and output it as a single line.
 

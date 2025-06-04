@@ -8,14 +8,14 @@
             "name": "Debug Script Minify",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/src/script_minify.py",
+            "program": "${workspaceFolder}/src/minifier.py",
             "console": "integratedTerminal"
         },
         {
             "name": "Test Script Minify",
             "type": "debugpy",
             "request":"launch",
-            "program": "${workspaceFolder}/src/script_minify_test.py",
+            "program": "${workspaceFolder}/src/minifier_test.py",
             "console": "integratedTerminal",            
         }
     ]

@@ -1,7 +1,7 @@
 import argparse
 import os
 
-class ScriptMinify:
+class Minifier:
     def __init__(self):
         parser = argparse.ArgumentParser(
             description="This tool will read in a shell or bash script and output it as a single line."
@@ -109,4 +109,4 @@ class ScriptMinify:
 
 
 if __name__ == "__main__":    
-    ScriptMinify().run()
+    Minifier().run()
